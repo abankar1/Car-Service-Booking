@@ -1,0 +1,67 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+  
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" (click)=shownav() data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#"><i class="fa fa-home myhome" routerLink="app-home" aria-hidden="true"></i></a>
+    </div>
+    
+    <div class="collapse navbar-collapse" id="myNavbar">
+      
+      <ul class="nav navbar-nav">
+
+        <a
+          [style.backgroundColor]="selectedComponent == 'nearby' ? 'whitesmoke':'black'"
+          [style.color]="selectedComponent == 'nearby' ? 'black':'whitesmoke'"
+          (click)="mySelectedComponent('nearby')"
+        class="col-md-2 col-xs-2 col-sm-2 mymenu" routerLink="app-service-center-near-by"><i class="fa fa-map-marker" aria-hidden="true"></i> NearBy</a>
+        
+        <a
+          [style.backgroundColor]="selectedComponent == 'service_centers' ? 'whitesmoke':'black'"
+          [style.color]="selectedComponent == 'service_centers' ? 'black':'whitesmoke'"
+          (click)="mySelectedComponent('service_centers')"
+        class="col-md-2 col-xs-2 col-sm-2 mymenu" routerLink="app-cities"><i class="fa fa-car" aria-hidden="true"></i> Service Centers</a>
+        
+        <a
+          [style.backgroundColor]="selectedComponent == 'why_us' ? 'whitesmoke':'black'"
+          [style.color]="selectedComponent == 'why_us' ? 'black':'whitesmoke'"
+          (click)="mySelectedComponent('why_us')"
+        class="col-md-2 col-xs-2 col-sm-2 mymenu" routerLink="app-why-us">why us?</a>        
+        
+        <a
+          [style.backgroundColor]="selectedComponent == 'about' ? 'whitesmoke':'black'"
+          [style.color]="selectedComponent == 'about' ? 'black':'whitesmoke'"
+          (click)="mySelectedComponent('about')"
+        class="col-md-2 col-xs-2 col-sm-2 mymenu" routerLink="app-about-us"> About us</a>        
+
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li
+        (click)="selectedComponent=''" 
+        class="ic"><a routerLink="app-register" *ngIf="isUserLoggedOut()"><span class="fa fa-user-plus"></span>Register</a></li>
+
+         <li
+        (click)="selectedComponent=''" 
+        class="ic"><a routerLink="app-orders" *ngIf="isUserLoggedIn()"><span class="fa fa-sign-in"></span> Orders</a></li>
+        
+        <li
+        (click)="selectedComponent=''"  
+        class="ic"><a routerLink="app-login" *ngIf="isUserLoggedOut()"><span class="fa fa-sign-out"></span> Login</a></li>
+        
+        <li
+        (click)="selectedComponent=''" 
+        class="ic"><a routerLink="app-home" *ngIf="isUserLoggedIn()" (click)="logout()"><span class="fa fa-sign-in"></span> Logout</a></li>      
+        
+      </ul>
+    
+    </div>
+  
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
